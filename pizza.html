@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Hello Pizza Point</title>
+<link rel="stylesheet" href="hello.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="login-haiji">
+<div class="pharam">
+<form class="register">
+<h1 class="pijja">Details Form</h1>
+<label>Name : </label>
+<input type="text" id="name">
+<label>Mob. No : </label>
+<input type="text" id="mobno">
+<label>Email ID : </label>
+<input type="text" id="email">
+<button id="buttn" onclick="addField();">Submit</button>
+</form>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th><Mob. No</th>
+<th>Email ID</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+ <script>
+      const formEl = document.querySelector("form");
+      const tbodyEl = document.querySelector("tbody");
+      const tableEl = document.querySelector("table");
+      function onAddWebsite(e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const mobno = document.getElementById("mobno").value;
+        const email = document.getElementById("email").value;
+        tbodyEl.innerHTML += `
+            <tr>
+                <td>${name}</td>
+                <td>${mobno}</td>
+                <td>${email}</td>
+                <td><button class="deleteBtn">Delete</button></td>
+            </tr>
+        `;
+      }
+
+      function onDeleteRow(e) {
+        if (!e.target.classList.contains("deleteBtn")) {
+          return;
+        }
+
+        const btn = e.target;
+        btn.closest("tr").remove();
+      }
+
+      formEl.addEventListener("submit", onAddWebsite);
+      tableEl.addEventListener("click", onDeleteRow);
+    </script>
+</body>
+</html>
